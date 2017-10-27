@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.sky.androidnotes">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <application
+            android:name=".App"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name=".TestActivity">
+        </activity>
+        <activity android:name=".view.recyclerview.TestActivity">
+        </activity>
+        <activity android:name=".refreshLayout.RefreshActivity">
+        </activity>
+        <activity
+                android:name=".design.ScrollingActivity"
+                android:label="@string/title_activity_scrolling"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <service
+                android:name=".aidl.MyService"
+                android:enabled="false"
+                android:exported="false">
+        </service>
+
+        <activity android:name=".fresco.FrescoActivity">
+        </activity>
+
+        <service android:name=".service.LocalService">
+            <intent-filter>
+                <action android:name="com.sky.intent.action.LOCAL_SERVICE"/>
+            </intent-filter>
+        </service>
+        <service
+                android:name=".service.RemoteService"
+                android:exported="true"
+                android:process=":guardService">
+            <intent-filter>
+                <action android:name="com.sky.intent.action.REMOTE_SERVICE"/>
+            </intent-filter>
+        </service>
+
+        <activity android:name=".service.ServiceTestActivity">
+
+        </activity>
+
+        <receiver
+                android:name=".service.MyReceiver"
+                android:enabled="true"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="com.sky.intent.action.TEST"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".customview.CustomViewActivity">
+        </activity>
+        <activity android:name=".https.HttpsActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
