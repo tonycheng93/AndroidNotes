@@ -5,6 +5,13 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="com.sky.androidnotes.aidl.book.ACCESS_BOOK_MANAGER_SERVICE"/>
+    <uses-permission android:name="com.sky.androidnotes.ACCESS_BOOK_PROVIDER"/>
+
+    <permission
+            android:name="com.sky.androidnotes.aidl.book.ACCESS_BOOK_MANAGER_SERVICE"
+            android:protectionLevel="normal"/>
+
 
     <application
             android:name=".App"
@@ -52,7 +59,6 @@
         </service>
 
         <activity android:name=".service.ServiceTestActivity">
-
         </activity>
 
         <receiver
@@ -71,12 +77,27 @@
         </activity>
         <activity android:name=".https.HttpsActivity">
 
+        </activity>
+
+        <service android:name=".https.MyService">
+        </service>
+        <service
+                android:name="com.sky.androidnotes.aidl.book.BookManagerService"
+                android:enabled="true"
+                android:process=":bookManagerService"/>
+
+        <activity android:name=".aidl.book.BookManagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <provider
+                android:authorities="com.sky.androidnotes.aidl.book.BOOK_PROVIDER"
+                android:permission="com.sky.androidnotes.ACCESS_BOOK_PROVIDER"
+                android:process=":bookProvider"
+                android:name=".aidl.book.BookProvider"/>
     </application>
 
 </manifest>
