@@ -85,6 +85,7 @@ public class BookManagerActivity extends AppCompatActivity {
         @Override
         public void onServiceDisconnected(ComponentName name) {
             mBookManager = null;
+            Log.d(TAG, "onServiceDisconnected: thread name = " + Thread.currentThread().getName());
             Log.d(TAG, "onServiceDisconnected: the binder died.");
         }
     };

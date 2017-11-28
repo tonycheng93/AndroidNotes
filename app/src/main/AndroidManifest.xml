@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="com.sky.androidnotes.aidl.book.ACCESS_BOOK_MANAGER_SERVICE"/>
     <uses-permission android:name="com.sky.androidnotes.ACCESS_BOOK_PROVIDER"/>
@@ -11,7 +12,6 @@
     <permission
             android:name="com.sky.androidnotes.aidl.book.ACCESS_BOOK_MANAGER_SERVICE"
             android:protectionLevel="normal"/>
-
 
     <application
             android:name=".App"
@@ -76,28 +76,49 @@
         <activity android:name=".customview.CustomViewActivity">
         </activity>
         <activity android:name=".https.HttpsActivity">
-
         </activity>
 
         <service android:name=".https.MyService">
         </service>
         <service
-                android:name="com.sky.androidnotes.aidl.book.BookManagerService"
+                android:name=".aidl.book.BookManagerService"
                 android:enabled="true"
                 android:process=":bookManagerService"/>
 
         <activity android:name=".aidl.book.BookManagerActivity">
+        </activity>
+
+        <provider
+                android:name=".aidl.book.BookProvider"
+                android:authorities="com.sky.androidnotes.aidl.book.BOOK_PROVIDER"
+                android:permission="com.sky.androidnotes.ACCESS_BOOK_PROVIDER"
+                android:process=":bookProvider"/>
+
+        <activity android:name=".aidl.book.BookProviderActivity">
+        </activity>
+
+        <service
+                android:name=".aidl.socket.TCPServerService"
+                android:process=":tcpService">
+        </service>
+
+        <activity android:name=".aidl.socket.TCPClientActivity">
+
+        </activity>
+
+        <service
+                android:name=".aidl.binderpool.BinderPoolService"
+                android:enabled="true"
+                android:exported="true">
+        </service>
+
+        <activity android:name=".aidl.binderpool.BinderPoolActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <provider
-                android:authorities="com.sky.androidnotes.aidl.book.BOOK_PROVIDER"
-                android:permission="com.sky.androidnotes.ACCESS_BOOK_PROVIDER"
-                android:process=":bookProvider"
-                android:name=".aidl.book.BookProvider"/>
     </application>
 
 </manifest>

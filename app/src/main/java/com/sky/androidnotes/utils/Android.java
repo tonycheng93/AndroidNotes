@@ -6,6 +6,11 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -42,5 +47,27 @@ public class Android {
             }
         }
         return isRunning;
+    }
+
+    /**
+     * 更加高效的读取进程名方法
+     *
+     * @return 进程名
+     */
+    public static String getProcessName() {
+        String processName = "";
+        try {
+            File file = new File("/proc/" + android.os.Process.myPid() + "/" + "cmdline");
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            processName = reader.readLine().trim();
+            reader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return processName;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return processName;
+        }
+        return processName;
     }
 }
