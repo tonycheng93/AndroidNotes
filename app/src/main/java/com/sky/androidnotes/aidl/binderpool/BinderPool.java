@@ -7,6 +7,8 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 
 import com.sky.androidnotes.aidl.binderpool.impl.ComputeImpl;
 import com.sky.androidnotes.aidl.binderpool.impl.SecurityCenterImpl;
@@ -39,12 +41,10 @@ public class BinderPool {
     }
 
     public static BinderPool getInstance(Context context) {
-        synchronized (BinderPool.class) {
-            if (sInstance == null) {
-                synchronized (BinderPool.class) {
-                    if (sInstance == null) {
-                        sInstance = new BinderPool(context);
-                    }
+        if (sInstance == null) {
+            synchronized (BinderPool.class) {
+                if (sInstance == null) {
+                    sInstance = new BinderPool(context);
                 }
             }
         }
