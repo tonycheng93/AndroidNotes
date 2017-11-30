@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="com.sky.androidnotes.aidl.book.ACCESS_BOOK_MANAGER_SERVICE"/>
     <uses-permission android:name="com.sky.androidnotes.ACCESS_BOOK_PROVIDER"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <permission
             android:name="com.sky.androidnotes.aidl.book.ACCESS_BOOK_MANAGER_SERVICE"
@@ -103,7 +104,6 @@
         </service>
 
         <activity android:name=".aidl.socket.TCPClientActivity">
-
         </activity>
 
         <service
@@ -113,6 +113,9 @@
         </service>
 
         <activity android:name=".aidl.binderpool.BinderPoolActivity">
+
+        </activity>
+        <activity android:name=".imageloader.ImageLoaderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

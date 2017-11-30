@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -69,5 +71,29 @@ public class Android {
             return processName;
         }
         return processName;
+    }
+
+    public static String hashKeyFromUrl(String url) {
+        String cacheKey;
+        try {
+            final MessageDigest digest = MessageDigest.getInstance("MD5");
+            digest.update(url.getBytes());
+            cacheKey = byteToHexString(digest.digest());
+        } catch (NoSuchAlgorithmException e) {
+            cacheKey = String.valueOf(url.hashCode());
+        }
+        return cacheKey;
+    }
+
+    private static String byteToHexString(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0, length = bytes.length; i < length; i++) {
+            String hex = Integer.toHexString(0xFF & bytes[i]);
+            if (hex.length() == 1) {
+                sb.append('0');
+            }
+            sb.append(hex);
+        }
+        return sb.toString();
     }
 }

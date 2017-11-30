@@ -40,7 +40,7 @@ public class FrescoActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fresco);
 
-        mBtnLoadImg = (Button) findViewById(R.id.btn_load_image);
+        mBtnLoadImg = (Button) findViewById(R.id.btn_load_img);
         mBtnLoadImg.setOnClickListener(this);
         mSimpleDraweeView = (ImageView) findViewById(R.id.sdv_image);
     }

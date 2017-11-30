@@ -2,20 +2,21 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.sky.androidnotes.fresco.FrescoActivity">
+        android:orientation="vertical"
+        tools:context="com.sky.androidnotes.imageloader.ImageLoaderActivity">
 
     <Button
-            android:id="@+id/btn_load_img"
+            android:id="@+id/btn_download"
             android:text="Load Image"
-            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
     <ImageView
+            android:id="@+id/iv_img"
             android:layout_gravity="center"
-            android:id="@+id/sdv_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 </LinearLayout>
